@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script src="../js/mui.min.js"></script>
+<script src="../js/decode.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/post-content.js"></script>
+<script src="../js/new-post.js"></script>
+<script type="text/javascript" src="../js/jquery.form.js" ></script>
+<link rel="stylesheet" href="../css/mui.min.css">
+<link rel="stylesheet" href="../css/iconfont.css">
+<link rel="stylesheet" href="../css/post-content.css">
+<style type="text/css">  
+.indent{text-indent: 2em;}   
+</style>  
+ <script type="text/javascript" charset="utf-8">
+	var fid = null;  
+	mui.init();
+	mui.plusReady(function(){
+		var webview = plus.webview.currentWebview();
+	//	tid = webview.postid;
+		var tid = document.getElementById('tid');
+		tid.value = webview.postid;
+		//alert(tid.value);
+		var input = document.getElementById("fid");
+		input.value = webview.forumid;
+		//alert(input.value);
+		var url = "http://112.74.102.213/forum.php?mod=post&action=reply&fid="+webview.forumid+"&tid="+webview.postid+"&extra=page%3D1&replysubmit=yes&infloat=yes&handlekey=fastpost";
+		//alert(url);
+		document.getElementById("fastpostform").action =url;
+	});
+
+</script>
+
+
+<script type="text/javascript" charset="UTF-8">
+function saveReport() {  
+    // jquery 表单提交  
+    $("#fastpostform").ajaxSubmit(function(message) {  
+          // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容 
+          alert("评论成功！");
+          document.getElementById('msg-text').value="";
+       });  
+      
+    return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转  
+}  
+</script>
+
+
+<link rel="stylesheet" href="../css/mui.min.css">
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title"></h1>
+	</header>
+<div id="div" class="mui-content" style="margin-bottom: 49px;">
+	
+
+</div>
+<input type="hidden" id="fid"  value="" />
+<input type="hidden" id="tid"  value="" />
+
+	<footer>
+		<form method="post" autocomplete="off" id="fastpostform" action="" onsubmit="return saveReport();">
+
+			<div class="footer-left">
+				<i id='msg-image' class="mui-icon mui-icon-camera" style="font-size: 28px;"></i>
+			</div>
+			<div class="footer-center">
+				<textarea id='msg-text' type="text" class='input-text' id="fastpostmessage" name="message"></textarea>
+				
+			</div>
+			<label for="" class="footer-right">
+				<input id="submit-button" type="submit" value="确定" />
+			</label>
+			
+			<input type="hidden" id="hash" name="formhash" value="" />
+			<input type="hidden" name="posttime" id="posttime" value="1443515093" />
+
+			<input type="hidden" name="usesig" value="1" />
+			<input type="hidden" name="subject" value="  " />
+		
+		</form>
+	</footer>
+
+</body>
+
+<script type="text/javascript">
+	//getContent();
+</script>
+
+
+</html>

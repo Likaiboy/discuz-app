@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+    	.user-name{
+    		display: inline;
+    		float: left;
+    		margin-top: 20px;
+    		margin-left: 20px;
+    		font-size: 20px;
+    		
+    	}
+    	.rank{
+    		display: inline;
+    		font-size: 12px;up
+    		margin-left:10px;
+    		color: #EC971F;
+    	}
+    	.points{
+    		display: inline;
+    		font-size:12px;
+    	}
+    	.number{
+
+    	}
+    	.money{
+    		display: inline;
+    		font-size:12px;
+    		margin-left: 10px;
+    	}
+    	.user-block{
+    		height: 80px;
+    		width: 	120px;
+    		background: #FFFFFF;
+    		margin-top:10px;
+    		border: 1px solid #D8D8D8;
+    		display: inline;
+    		float: left;
+    	}
+    </style>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+
+<div class="mui-content">
+	<div id="userDiv" style="background: #FFFFFF;height: 180px;">
+		<div id="imgDiv">
+			<img style="display: inline;height: 71px;width: 86px;margin-left:20px;margin-top: 20px;float:left;" class="imgStyle" src="../images/muwu.jpg" />
+		</div>
+		<div class="user-name">
+			测试用户名 
+			<div class="rank" id="userRank">
+				注册会员
+			</div>
+			<div name="number">
+				<div class="points" id="userPoints">
+					积分：15
+				</div>
+				<div class="money" id="userMoney">
+					金钱：38
+				</div>
+			</div>
+			<div style="margin-top: 8px;font-family: '微软雅黑';" id="userSign">
+				个性签名
+			</div>
+		</div>
+		<div id="user-related" style="display: inline;background: #FFFFFF;">
+			<div class="user-block"><div style="margin-top:20px;padding-left: 22%;">我的好友</div><div id="friends" style="padding-left: 40%">5</div></div>
+			<div class="user-block" style="border-left:0px;"><div style="margin-top:20px;padding-left: 22%;">我的关注</div><div id="focus" style="padding-left: 40%">5</div></div>
+			<div class="user-block" style="border-left:0px;"><div style="margin-top:20px;padding-left: 22%;">我的粉丝</div><div id="fans" style="padding-left: 40%">5</div></div>
+		</div>
+	</div>
+
+	
+</div>
+<div class="mui-content-padded">
+	<ul class="mui-table-view">
+		<li class="mui-table-view-cell"><a class="mui-navigate-right" href="#"><span class="mui-icon mui-icon-contact"></span>我的资料</a></li>
+		<li class="mui-table-view-cell"><a class="mui-navigate-right" href="#"><span class="mui-icon mui-icon-flag" style="color: #CF2D28;"></span>我的元宝</a></li>
+		<br>
+		<li class="mui-table-view-cell"><a class="mui-navigate-right" href="#"><span class="mui-icon mui-icon-compose" style="color: #DD524D"></span>我的帖子</a></li>
+		<li class="mui-table-view-cell"><a class="mui-navigate-right" href="#"><span class="mui-icon mui-icon-star" style="color:#EC971F"></span>收藏帖子</a></li>
+		<li class="mui-table-view-cell"><a class="mui-navigate-right" href="#"><span class="mui-icon mui-icon-plus" style="color:#2AC845"></span>我的草稿</a></li>
+		<br>
+		<li class="mui-table-view-cell"><a id="settings" class="mui-navigate-right" href="#"><span class="mui-icon mui-icon-gear" style="color: #333333;"></span>个人设置</a></li>
+	</ul>
+	
+		
+	</ul>
+</div>
+</body>
+<script>
+	mui.init();
+	document.getElementById('settings').addEventListener('tap', function(){
+		mui.openWindow({
+	    					url: 'setting.html', 
+	    					
+  		});
+		
+	});
+	
+</script>
+</html>

@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.form.js" ></script>
+		<link rel="stylesheet" href="../css/mui.min.css">
+
+	<script type="text/javascript" src="../js/new-post.js"></script>
+
+		
+
+		<script type="text/javascript">
+			function submitForm() {
+				//document.getElementById('fastpostform').submit();
+				$("#fastpostform").ajaxSubmit(function(message) {  
+          			// 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容 
+        				  alert("发帖成功！");
+        				  mui.openWindow({url:'index.html'});
+       			});  
+       			return false;
+			}
+		</script>
+		<style>
+			.mui-popover {
+				height: 300px;
+			}
+			a~input {} .mui-icon-micphone {} p {
+				text-indent: 22px;
+			}
+			.mui-popover {
+				height: 300px;
+			}
+		</style>
+		
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/json2.js"></script>
+		<script src="../js/json_parse.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<button class="mui-btn mui-pull-right" onclick="return submitForm();">
+				发帖
+			</button>
+			<h1 class="mui-title">Title</h1>
+		</header>
+		<div class="mui-content">
+
+			<form class="mui-input-group" method="post" autocomplete="off" id="fastpostform" onsubmit="return submitForm();" action="http://112.74.102.213/forum.php?mod=post&action=newthread&fid=2&topicsubmit=yes&infloat=yes&handlekey=fastnewpost">
+				<div>
+					<button id='showforumPicker' class="mui-btn mui-btn-block" type='button'>选择版块</button>
+				</div>
+
+				<input type="hidden" id="hash" name="formhash" value="" />
+				<input type="hidden" name="posttime" id="posttime" value="1443515093" />
+
+				<input type="hidden" name="usesig" value="1" />
+				<div class="mui-input-row">
+					<label>标题：</label>
+					<input type="text" id="title" name="subject" placeholder="输入标题">
+				</div>
+
+				<div style="margin: 10px 5px;" >
+					<textarea id="textarea" rows="8" placeholder="请输入内容" name="message"></textarea>
+				</div>
+			</form>
+
+			<ul class="mui-table-view" id="addImage" style="font-size: 20px; height: 60px; margin: 10px auto;">
+				<a><span class="mui-icon mui-icon-image" style="font-size: 40px; margin-top: 10px; margin-left: 10px; color: #AAAAAA; padding-right: 10px;" ></span>
+				</a>添加图片
+			</ul>
+
+			<ul class="mui-table-view" style="font-size:20px; height: 60px; margin: 10px auto;">
+				<a><span class="mui-icon mui-icon-upload "  style="font-size: 40px; margin-top: 10px; margin-left: 10px; color: #AAAAAA; padding-right: 10px;"></span></a>添加附件
+			</ul>
+			<p>
+
+			</p>
+
+		</div>
+
+	</body>
+
+	<script>
+		(function($, doc) {
+				$.init();
+				$.ready(function() {
+					//级联示例
+					var forumPicker = new $.PopPicker({
+						layer: 2
+					});
+					$.ajax({
+					    type : "POST",
+					    url : "http://112.74.102.213/test/choose_forum.php",
+					    dataType : "jsonp",
+					    jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+					    jsonpCallback:"success_jsonpCallback",
+					    success : function(data){
+					    	
+							var forumData = [];
+							var res = JSON.parse(data);
+							
+							for(var i =0;i < res.length;i++){
+								first = res[i]["name"];//一级版块名
+								forumData[i] = new Array();
+								forumData[i]["'value'"] = first;
+								forumData[i]['text'] = first;				
+								forumData[i]['children'] = new Array();
+								
+								for(var j =0;j < res[i]["second"].length;j++)
+								{
+									forumData[i]['children'][j] = new Array();
+									forumData[i]['children'][j]['value'] = res[i]['second'][j]["fid"];
+									forumData[i]['children'][j]['text'] = res[i]["second"][j]["name"];
+									
+								}					
+							}
+							
+							forumPicker.setData(forumData);
+					    },
+					    error:function(){
+					    }
+					});
+					
+					
+					var showforumPickerButton = doc.getElementById('showforumPicker');
+					showforumPickerButton.addEventListener('tap', function(event) {
+						forumPicker.show(function(items) {
+							showforumPickerButton.innerText =  items[0].text + " " + items[1].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+				});
+			})(mui, document);
+	
+		
+		
+	</script>
+
+</html>

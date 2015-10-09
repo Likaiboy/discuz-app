@@ -1,0 +1,45 @@
+.list{
+	height:auto;
+	padding-bottom: 0px;
+}
+.status{
+	font-size: 12px;
+}
+
+.ul{
+	padding-top: 20px;
+}
+.author{
+	
+	margin-top:20px;
+	margin-left: 10%;
+	float:left;
+	
+}
+
+.view{
+	margin-top: 20px;
+	float:right;
+
+}
+
+.reply{
+
+	margin-top:20px;
+	margin-right: 3px;
+	float:right;
+
+}
+
+.date{
+	margin-top:20px;
+	padding-left:2%;
+	float:left;
+
+}
+
+
+.iconfont{
+	display: block;
+
+}
