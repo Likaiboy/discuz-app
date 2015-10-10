@@ -7,16 +7,14 @@
 <script src="../js/decode.js"></script>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/post-content.js"></script>
-<script src="../js/new-post.js"></script>
+<script src="../js/ajax-formhash.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js" ></script>
 <link rel="stylesheet" href="../css/mui.min.css">
 <link rel="stylesheet" href="../css/iconfont.css">
 <link rel="stylesheet" href="../css/post-content.css">
-<style type="text/css">  
-.indent{text-indent: 2em;}   
-</style>  
+ 
  <script type="text/javascript" charset="utf-8">
-	var fid = null;  
+	//var fid = null;  
 	mui.init();
 	mui.plusReady(function(){
 		var webview = plus.webview.currentWebview();
@@ -24,8 +22,8 @@
 		var tid = document.getElementById('tid');
 		tid.value = webview.postid;
 		//alert(tid.value);
-		var input = document.getElementById("fid");
-		input.value = webview.forumid;
+		var fid = document.getElementById("fid");
+		fid.value = webview.forumid;
 		//alert(input.value);
 		var url = "http://112.74.102.213/forum.php?mod=post&action=reply&fid="+webview.forumid+"&tid="+webview.postid+"&extra=page%3D1&replysubmit=yes&infloat=yes&handlekey=fastpost";
 		//alert(url);

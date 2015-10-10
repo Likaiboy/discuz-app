@@ -42,7 +42,7 @@ $.ajax({
 				var title = this.innerText;
 				//alert(title);
 				mui.openWindow({
-	    		url: 'list.html', 
+	    		url: 'thread-list.html', 
 	    		extras: {
 	    			forumid: id,
 	    			forumtitle:title
